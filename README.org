@@ -1,0 +1,36 @@
+#+title: HELPA: Helpful Emacs Lisp Package Archive
+
+* Goals
+The main goal of HELPA is to host package recipes which useful metadata.
+
+* Recipe format
+A recipe must be a list of the form:
+
+#+begin_src emacs-lisp :lexical t
+(ID . PROPS)
+#+end_src
+
+=PROPS= must be a plist containing at least the following keywords:
+
+- =:description= ~String~ describing the package. At the least it should mention what the package does.
+- =:repo= ~String~ The package repository URL.
+
+A minimal example recipe:
+
+#+begin_src emacs-lisp :lexical t
+(example :description "An example package. It serves as an example."
+         :repo "https://www.github.com/progfolio/HELPA")
+#+end_src
+
+=PROPS= may also contain any of the following keywords:
+
+- =:url= ~String~ package website URL
+- =:similar= ~List~ (similar package IDs)
+- =:replaces= ~List~ (package IDs which the package can replace because it offers a strict super set of functionality)
+- =:idea= ~Boolean~ =t= Added in cases where there is no implementation of the package
+- =:unmaintained= ~Boolean~ =t= in cases where the package does not meet the [[#maintenance-standards][maintenance standards]].
+
+* Maintenance Standards
+:PROPERTIES:
+:CUSTOM_ID: maintenance-standards
+:END:
